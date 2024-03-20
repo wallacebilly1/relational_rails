@@ -240,6 +240,7 @@
           null,
           1,
           1,
+          1,
           null
         ]
       },
@@ -263,13 +264,16 @@
           null
         ]
       },
-      "/Users/billy/Turing/2mod/projects/relational_rails/app/controllers/teams_controller.rb": {
+      "/Users/billy/Turing/2mod/projects/relational_rails/app/models/player.rb": {
         "lines": [
           1,
+          null,
+          null
+        ]
+      },
+      "/Users/billy/Turing/2mod/projects/relational_rails/app/controllers/players_controller.rb": {
+        "lines": [
           1,
-          0,
-          null,
-          null,
           1,
           1,
           null,
@@ -283,6 +287,6 @@
         ]
       }
     },
-    "timestamp": 1710964984
+    "timestamp": 1710966150
   }
 }
