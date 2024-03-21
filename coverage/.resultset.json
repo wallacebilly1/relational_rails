@@ -253,7 +253,7 @@
       "/Users/billy/Turing/2mod/projects/relational_rails/app/models/team.rb": {
         "lines": [
           1,
-          null,
+          1,
           null
         ]
       },
@@ -267,7 +267,7 @@
       "/Users/billy/Turing/2mod/projects/relational_rails/app/models/player.rb": {
         "lines": [
           1,
-          null,
+          1,
           null
         ]
       },
@@ -287,6 +287,6 @@
         ]
       }
     },
-    "timestamp": 1710966150
+    "timestamp": 1711041836
   }
 }

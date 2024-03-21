@@ -28,7 +28,7 @@ RSpec.describe "Players Index Page", type: :feature do
           expect(page).to have_content('Name: Nikola Jokic')
           expect(page).to have_content('Age: 29')
           expect(page).to have_content('International Player: true')
-          # expect(page).to have_content('Team: Nuggets')
+          expect(page).to have_content('Team: Nuggets')
         end
       end
     end
