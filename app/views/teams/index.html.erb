@@ -1,5 +1,7 @@
 <h1>All Teams</h1>
 
+<h3><a href="/teams/new" id="create-team-link">Create Team</a></h3>
+
 <% @teams.each do |team| %>
   <p>Name: <%= team.name %>, Created At: <%= team.created_at%></p>
 <% end %>

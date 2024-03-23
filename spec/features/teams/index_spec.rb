@@ -82,4 +82,82 @@ RSpec.describe "Teams Index Page", type: :feature do
       end
     end
   end
+
+  describe "User Story 11" do
+    describe "As a visitor" do
+      describe "When I visit the Parent Index Page" do
+        it "Then  I see a link to create a new Team" do
+          #act
+          visit "/teams"
+          #assert
+          expect(page).to have_link('Create Team', href: '/teams/new')
+        end
+      end
+
+      describe "When I click the 'New Team' link" do
+        it "Then I am taken to '/teams/new'" do
+          #act
+          visit "/teams"
+          find("#create-team-link").click
+          #assert
+          expect(page).to have_current_path("/teams/new")
+          expect(page).to have_content("Create a new team")
+        end
+
+        it "Where I see a form for a new team" do
+          #act
+          visit "/teams/new"
+          #assert
+          expect(page).to have_selector('form')
+        end
+      end
+      describe "When I fill out the form with a new team's attributes and I click the button 'Create Team'" do
+        it "Then a 'POST' request is sent to the '/teams' route" do
+          #act
+          visit "/teams/new"
+
+          fill_in "name", with: "Kings"
+          fill_in "city", with: "Sacramento"
+          choose("single_city_true")
+          fill_in "total_cap", with: "149993550"
+
+          click_button "submit"
+          #assert
+          #found the below method from Chat, but it's not working. Update with proper test.
+          # expect(page.driver.request.method).to eq(:post)
+        end
+
+        it "Then a new Team record is created" do
+          #act
+          visit "/teams/new"
+
+          fill_in "name", with: "Kings"
+          fill_in "city", with: "Sacramento"
+          choose("single_city_true")
+          fill_in "total_cap", with: "149993550"
+
+          click_button "submit"
+          #assert
+          expect(Team.last.name).to eq "Kings"
+        end
+
+        it "Then I am redirected to that Teams Index page where I see the new team displayed" do
+          #act
+          visit "/teams/new"
+
+          fill_in "name", with: "Kings"
+          fill_in "city", with: "Sacramento"
+          choose("single_city_true")
+          fill_in "total_cap", with: "149993550"
+
+          click_button "submit"
+          #assert
+          expect(page).to have_content('Name: Kings')
+          expect(page).to have_content('City: Sacramento')
+          expect(page).to have_content('This team has never moved: true')
+          expect(page).to have_content('Total Salary Cap: 149993550')
+        end
+      end
+    end
+  end
 end

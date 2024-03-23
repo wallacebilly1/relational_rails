@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "/teams", to: "teams#index"
+  get "/teams/new", to: "teams#new"
+  post "/teams", to: "teams#create"
   get "/teams/:id", to: "teams#show"
   get "/players", to: "players#index"
   get "/players/:id", to: "players#show"

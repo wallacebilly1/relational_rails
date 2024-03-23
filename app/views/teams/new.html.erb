@@ -1,0 +1,24 @@
+<form action="/teams" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  
+  <p>Create a new team:</p>
+  
+  <label for="name">Team Name:</label>
+  <input type='text' id="name" name='name'/><br/>
+
+  <label for="city">City:</label>
+  <input type='text' id="city" name='city'/><br/>
+
+  <label> Has this team always been in this city? </label>
+  <label>
+    <input type="radio" id="single_city_true" name="single_city" value="true"> True
+  </label>
+  <label>
+    <input type="radio" id="single_city_false" name="single_city" value="false"> False
+  </label><br/>
+
+  <label for="total_cap">Total Salary Cap:</label>
+  <input type='text' id="total_cap" name='total_cap'/><br/><br/>
+
+  <input type='submit' id="submit"/>
+</form>
