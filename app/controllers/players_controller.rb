@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
 
   def create
     @team = Team.find(params[:id])
-    song = Song.create!(song_params)
+    player = Player.create!(player_params)
     redirect_to "/teams/#{@team.id}/players"
   end
 

@@ -7,9 +7,10 @@
   <%= form.label :age, "Age:"%> 
   <%= form.text_field :age%> </br>
   Was this player born outside of the US?
-  <%= form.radio_button :international, "True"%>
+  <%= form.radio_button :international, "true"%>
   <%= form.label :international_true, "True"%>
-  <%= form.radio_button :international, "False"%>
+  <%= form.radio_button :international, "false"%>
   <%= form.label :international_false, "False"%></br>
+  <%= form.hidden_field :team_id, value: @team.id %>
   <%= form.submit :submit%>
 <% end %>

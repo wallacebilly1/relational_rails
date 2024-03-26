@@ -14,7 +14,6 @@ class TeamsController < ApplicationController
 
   def create
     team = Team.create!(team_params)
-    # require 'pry'; binding.pry
 
     redirect_to "/teams/#{team.id}"
   end

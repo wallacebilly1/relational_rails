@@ -74,20 +74,7 @@ RSpec.describe "Teams Players Index Page", type: :feature do
       end
 
       describe "When I fill in the form with the player's attributes and click 'Create Player'" do
-        it "Then a new Player record is created for that team" do
-          #act
-          visit "/teams/#{@nuggets.id}/players/new"
-          
-          fill_in "name", with: "Michael Porter Jr."
-          fill_in "age", with: 25
-          choose("international_false")
-
-          click_button "submit"
-          #assert
-          expect(Player.last.name).to eq "Michael Porter Jr."
-        end
-
-        it "And I am redirected to the Team Players Index page where I see the new player listed" do
+        it "Then a new Player record is created for that team and I am redirected to the Team Players Index page where I see the new player listed" do
           #act
           visit "/teams/#{@nuggets.id}/players/new"
           
@@ -99,6 +86,8 @@ RSpec.describe "Teams Players Index Page", type: :feature do
           #assert
           expect(page).to have_current_path("/teams/#{@nuggets.id}/players")
           expect(page).to have_content('Name: Michael Porter Jr')
+          expect(page).to have_content('Age: 25')
+          expect(page).to have_content('International Player: false')
         end
       end
     end
