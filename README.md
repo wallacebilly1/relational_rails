@@ -1,24 +1,2 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Database Schema Diagram:
+<img width="529" alt="Screenshot 2024-03-26 at 2 18 26 PM" src="https://github.com/wallacebilly1/relational_rails/assets/155924313/6787d0ac-0a94-4a81-92e9-676904e038e3">
