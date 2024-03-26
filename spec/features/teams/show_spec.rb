@@ -107,7 +107,7 @@ RSpec.describe "Teams Show Page", type: :feature do
           #act
           visit "/teams/#{@lakers.id}"
           #assert
-          expect(page).to have_button('Delete')
+          expect(page).to have_button('Delete Team')
         end
       end
 
@@ -115,7 +115,7 @@ RSpec.describe "Teams Show Page", type: :feature do
         it "Then I am redirected to the teams index page where I no longer see this team" do
           #act
           visit "/teams/#{@lakers.id}"
-          click_button('Delete')
+          click_button('Delete Team')
           #assert
           expect(page).to have_current_path("/teams")
           expect(page).to_not have_content("Lakers")
@@ -124,7 +124,7 @@ RSpec.describe "Teams Show Page", type: :feature do
         it "And all players from that team are deleted" do
           #act
           visit "/teams/#{@lakers.id}"
-          click_button('Delete')
+          click_button('Delete Team')
           visit "/players"
           #assert
           expect(page).to_not have_content("Lebron James")

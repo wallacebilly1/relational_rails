@@ -29,6 +29,16 @@ class TeamsController < ApplicationController
     redirect_to "/teams/#{team.id}"
   end
 
+  def destroy
+    team = Team.find(params[:id])
+    players = team.players
+
+    players.destroy_all
+    team.destroy
+
+    redirect_to "/teams"
+  end
+
   private
   def team_params
     params.permit(:name, :city, :single_city, :total_cap)
