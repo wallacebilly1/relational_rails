@@ -11,6 +11,8 @@ class TeamsPlayersController < ApplicationController
   def create
     team = Team.find(params[:id])
     player = Player.create!(player_params)
+
+    redirect_to "/teams/#{team.id}/players" 
   end
 
   private

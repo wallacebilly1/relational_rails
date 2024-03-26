@@ -84,8 +84,8 @@ RSpec.describe "Teams Players Index Page", type: :feature do
 
           click_button "submit"
           #assert
-          expect(page).to have_current_path("/players")
-          expect(page).to have_content('Name: Michael Porter Jr')
+          expect(page).to have_current_path("/teams/#{@nuggets.id}/players")
+          expect(page).to have_content('Name: Michael Porter Jr.')
           expect(page).to have_content('Age: 25')
           expect(page).to have_content('International Player: false')
         end

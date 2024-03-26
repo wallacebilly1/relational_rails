@@ -1,7 +1,7 @@
 <h1> Create a new player </h1>
 
 <%= form_with url: "/teams/#{@team.id}/players", method: :post, data: {turbo: :false} do |form| %>
-  <p> Edit Team: </p>
+  <p> Create Player: </p>
   <%= form.label :name, "Name:"%> 
   <%= form.text_field :name%> </br>
   <%= form.label :age, "Age:"%> 
