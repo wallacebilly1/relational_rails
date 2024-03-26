@@ -8,13 +8,24 @@ class PlayersController < ApplicationController
   end
 
   def new
-
+    @players = Player.all
   end
 
   def create
-    @team = Team.find(params[:id])
     player = Player.create!(player_params)
-    redirect_to "/teams/#{@team.id}/players"
+    redirect_to "/players"
+  end
+
+  def edit
+    @player = Player.find(params[:id])
+    @team = Team.find(@player.team_id)
+  end
+
+  def update 
+    player = Player.find(params[:id])
+    player.update!(player_params)
+
+    redirect_to "/players/#{player.id}"
   end
 
   private

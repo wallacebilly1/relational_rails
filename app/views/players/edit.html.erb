@@ -1,0 +1,16 @@
+<div id="edit_player_form">
+<%= form_with url: "/players/#{@player.id}", method: :patch, data: {turbo: :false} do |form| %>
+  <p> Update Player: </p>
+  <%= form.label :name, "Name:"%> 
+  <%= form.text_field :name%> </br>
+  <%= form.label :age, "Age:"%> 
+  <%= form.text_field :age%> </br>
+  Was this player born outside of the US?
+  <%= form.radio_button :international, "true"%>
+  <%= form.label :international_true, "True"%>
+  <%= form.radio_button :international, "false"%>
+  <%= form.label :international_false, "False"%></br>
+  <%= form.hidden_field :team_id, value: @team.id %>
+  <%= form.submit :Submit%>
+<% end %>
+</div>

@@ -1,3 +1,22 @@
+<div id="edit_team_form">
+<%= form_with url: "/teams/#{@team.id}", method: :patch, data: {turbo: :false} do |form| %>
+  <p> Edit Team: </p>
+  <%= form.label :name, "Name:"%> 
+  <%= form.text_field :name%> </br>
+  <%= form.label :name, "City:"%> 
+  <%= form.text_field :city%> </br>
+  Has this team always been in this city?
+  <%= form.radio_button :single_city, "true"%>
+  <%= form.label :single_city_true, "True"%>
+  <%= form.radio_button :single_city, "false"%>
+  <%= form.label :single_city_false, "False"%></br>
+  <%= form.label :total_cap, "Total Salary Cap:"%>
+  <%= form.number_field :total_cap%>
+  <%= form.submit :submit%>
+<% end %>
+</div>
+
+
 <!--
 <form action="/teams/<%= @team.id %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -25,20 +44,3 @@
   <input type='submit' id="submit"/>
 </form>
 -->
-<div id="edit_team_form">
-<%= form_with url: "/teams/#{@team.id}", method: :patch, data: {turbo: :false} do |form| %>
-  <p> Edit Team: </p>
-  <%= form.label :name, "Name:"%> 
-  <%= form.text_field :name%> </br>
-  <%= form.label :name, "City:"%> 
-  <%= form.text_field :city%> </br>
-  Has this team always been in this city?
-  <%= form.radio_button :single_city, "true"%>
-  <%= form.label :single_city_true, "True"%>
-  <%= form.radio_button :single_city, "false"%>
-  <%= form.label :single_city_false, "False"%></br>
-  <%= form.label :total_cap, "Total Salary Cap:"%>
-  <%= form.number_field :total_cap%>
-  <%= form.submit :submit%>
-<% end %>
-</div>

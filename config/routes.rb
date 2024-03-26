@@ -14,8 +14,12 @@ Rails.application.routes.draw do
   get "/teams/:id", to: "teams#show"
   get "/teams/:id/edit", to: "teams#edit"
   patch "/teams/:id", to: "teams#update"
+
   get "/players", to: "players#index"
   get "/players/:id", to: "players#show"
+  get "/players/:id/edit", to: "players#edit"
+  patch "/players/:id", to: "players#update"
+  
   get "/teams/:id/players", to: "teams_players#index"
   get "/teams/:id/players/new", to: "teams_players#new"
   post "/teams/:id/players", to: "players#create"

@@ -45,8 +45,8 @@ RSpec.describe "Teams Show Page", type: :feature do
 
   describe "User Story 12" do
     describe "As a visitor" do
-      describe "When I visit a team show page" do
-        it "Then I see a link to update that team, 'Update Team'" do
+      describe "When I visit a '/teams/:id'" do
+        it "Then I see a link to update that team" do
           #act 
           visit "/teams/#{@nuggets.id}"
           #assert
