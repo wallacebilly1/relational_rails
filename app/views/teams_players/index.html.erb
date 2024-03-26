@@ -2,9 +2,11 @@
 
 <h3> <%= link_to "Create Player", "/teams/#{@team.id}/players/new" %> </h3>
 
-<% @team.players.each do |player| %>
+<% @players.each do |player| %>
   <p>Name: <%= player.name %></p>
   <p>Age: <%= player.age %></p>
   <p>International Player: <%= player.international %></p>
 <% end %>
+
+<h3> <%= link_to "Sort Alphabetically", "/teams/#{@team.id}/players?sort=alphabetically" %> </h3>
 

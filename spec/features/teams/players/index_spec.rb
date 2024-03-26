@@ -117,8 +117,8 @@ RSpec.describe "Teams Players Index Page", type: :feature do
           visit "/teams/#{@nuggets.id}/players"
           click_on("Sort Alphabetically")
           #assert
-          expect(page).to have_current_path("/teams/#{@nuggets.id}/players/")
-          expect(@jamal.name).to appear_before(@jokic.name)
+          expect(page).to have_current_path("/teams/#{@nuggets.id}/players?sort=alphabetically")
+          expect(@murray.name).to appear_before(@jokic.name)
         end
       end
     end
