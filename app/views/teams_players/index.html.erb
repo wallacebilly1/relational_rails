@@ -3,9 +3,13 @@
 <h3> <%= link_to "Create Player", "/teams/#{@team.id}/players/new" %> </h3>
 
 <% @players.each do |player| %>
-  <p>Name: <%= player.name %></p>
-  <p>Age: <%= player.age %></p>
-  <p>International Player: <%= player.international %></p>
+  <div id="player_<%=player.id%>_info">
+    <h3>Name: <%= player.name %></h3>
+    <p>Age: <%= player.age %></p>
+    <p>International Player: <%= player.international %></p>
+    <p>Team: <%= player.team.name %></p>
+    <%= button_to "Edit #{player.name}", "/players/#{player.id}/edit", method: :get %> 
+  </div>
 <% end %>
 
 <h3> <%= link_to "Sort Alphabetically", "/teams/#{@team.id}/players?sort=alphabetically" %> </h3>

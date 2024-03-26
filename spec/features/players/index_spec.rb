@@ -66,4 +66,49 @@ RSpec.describe "Players Index Page", type: :feature do
       end
     end
   end
+
+  describe "User Story 18" do
+    describe "As a visitor" do
+      describe "When I visit '/players'" do
+        it "Next to every player, I see a link to edit that player" do
+          #act
+          visit "/players"
+          #assert
+          expect(page).to have_button("Edit #{@jokic.name}")
+          expect(page).to have_button("Edit #{@murray.name}")
+          expect(page).to have_button("Edit #{@shai.name}")
+        end
+      end
+
+      describe "When I click the 'edit' link" do
+        it "I am taken to that player's edit page where I can update the information" do 
+          #act
+          visit "/players"
+          click_on("Edit #{@jokic.name}")
+          #assert
+          expect(page).to have_current_path("/players/#{@jokic.id}/edit")
+        end
+      end
+
+      describe "When I visit '/teams/:id/players'" do
+        it "Next to every player, I see a link to edit that player" do
+          #act
+          visit "/teams/#{@nuggets.id}/players"
+          #assert
+          expect(page).to have_button("Edit #{@jokic.name}")
+          expect(page).to have_button("Edit #{@murray.name}")
+        end
+      end
+
+      describe "When I click the 'edit' link" do
+        it "I am taken to that player's edit page where I can update the information" do 
+          #act
+          visit "/teams/#{@nuggets.id}/players"
+          click_on("Edit #{@jokic.name}")
+          #assert
+          expect(page).to have_current_path("/players/#{@jokic.id}/edit")
+        end
+      end
+    end
+  end
 end
