@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   def index
+    # move .order to the model 
     @teams = Team.all.order(created_at: :desc)
   end
 
@@ -8,18 +9,29 @@ class TeamsController < ApplicationController
   end
 
   def new
+
   end
 
   def create
-    team = Team.new({
-      name: params[:name],
-      city: params[:city],
-      single_city: params[:single_city],
-      total_cap: params[:total_cap].to_i
-    })
-
-    team.save
+    team = Team.create!(team_params)
+    # require 'pry'; binding.pry
 
     redirect_to "/teams/#{team.id}"
+  end
+
+  def edit
+    @team = Team.find(params[:id])
+  end
+
+  def update 
+    team = Team.find(params[:id])
+    team.update!(team_params)
+
+    redirect_to "/teams/#{team.id}"
+  end
+
+  private
+  def team_params
+    params.permit(:name, :city, :single_city, :total_cap)
   end
 end

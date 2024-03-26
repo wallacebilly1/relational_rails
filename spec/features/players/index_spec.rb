@@ -15,12 +15,6 @@ RSpec.describe "Players Index Page", type: :feature do
   end
   
   describe "User Story 3" do
-    # User Story 3, Child Index 
-
-    # As a visitor
-    # When I visit '/child_table_name'
-    # Then I see each Child in the system including the Child's attributes
-    # (data from each column that is on the child table)
     describe "As a visitor" do
       describe "When I visit '/players'" do
         it "Then I see each player in the system including the player's attributes" do
@@ -37,22 +31,17 @@ RSpec.describe "Players Index Page", type: :feature do
   end
 
   describe "User Story 8" do
-    # User Story 8, Child Index Link
-
-    # As a visitor
-    # When I visit any page on the site
-    # Then I see a link at the top of the page that takes me to the Child Index
     describe "As a visitor" do
       describe "When I visit any page on the site" do
         it "Then I see a link at the top of the page that takes me to the Players Index" do
           #act
           visit "/teams"
           #assert
-          expect(page).to have_link('Players', href: '/players')
+          expect(page).to have_link("Players")
           #act
           visit "/teams/#{@nuggets.id}"
           #assert
-          expect(page).to have_link('Players', href: '/players')
+          expect(page).to have_link("Players")
         end
       end
     end

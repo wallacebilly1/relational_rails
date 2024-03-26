@@ -8,12 +8,6 @@ RSpec.describe "Teams Show Page", type: :feature do
   end
 
   describe "User Story 2" do
-    # User Story 2, Parent Show 
-
-    # As a visitor
-    # When I visit '/parents/:id'
-    # Then I see the parent with that id including the parent's attributes
-    # (data from each column that is on the parent table)
     describe "As a visitor" do
       describe "When I visit '/teams/:id'" do
         it "Then I see the parent with that id, including parent's attributes" do
@@ -30,11 +24,6 @@ RSpec.describe "Teams Show Page", type: :feature do
   end
 
   describe "User Story 7" do
-    # User Story 7, Parent Child Count
-
-    # As a visitor
-    # When I visit a parent's show page
-    # I see a count of the number of children associated with this parent
     describe "As a visitor" do
       describe "When I visit '/teams/:id" do
         it "Then I see a count of the number of players associated with this team" do
@@ -49,6 +38,63 @@ RSpec.describe "Teams Show Page", type: :feature do
           visit "/teams/#{@lakers.id}"
           #assert
           expect(page).to have_content("Player Count: 1")
+        end
+      end
+    end
+  end
+
+  describe "User Story 12" do
+    describe "As a visitor" do
+      describe "When I visit a team show page" do
+        it "Then I see a link to update that team, 'Update Team'" do
+          #act 
+          visit "/teams/#{@nuggets.id}"
+          #assert
+          expect(page).to have_link('Update Team')
+        end
+      end
+
+      describe "When I click the link 'Update Team'" do
+        it "Then I am taken to '/teams/:id/edit'" do
+          #act
+          visit "/teams/#{@nuggets.id}"
+          click_on("Update Team")
+          #assert
+          expect(page).to have_current_path("/teams/#{@nuggets.id}/edit")
+        end
+
+        it "Where I see a form to edit the team's attributes" do
+          #act
+          visit "/teams/#{@nuggets.id}/edit"
+          #assert
+          within "#edit_team_form" do
+            expect(page).to have_selector('form')
+          end
+        end
+      end
+
+      describe "When I fill out the form with updated information and click the button to submit the form" do
+        it "Then the team record is updated and I am redirected to the teams page where I see the updated info" do
+          #act
+          visit "/teams/#{@nuggets.id}/edit"
+          #assert
+          expect(@nuggets.name).to eq "Nuggets"
+          expect(@nuggets.city).to eq "Denver"
+          expect(@nuggets.single_city).to eq true
+          expect(@nuggets.total_cap).to eq 185751085
+          #act
+          fill_in "name", with: "Dinos"
+          fill_in "city", with: "Colorado"
+          choose("single_city_false")
+          fill_in "total_cap", with: "123123"
+
+          click_button "submit"
+          #assert
+          expect(page).to have_current_path("/teams/#{@nuggets.id}")
+          expect(page).to have_content('Name: Dinos')
+          expect(page).to have_content('City: Colorado')
+          expect(page).to have_content('This team has never moved: false')
+          expect(page).to have_content('Total Salary Cap: 123123')
         end
       end
     end

@@ -1,0 +1,15 @@
+<h1> Create a new player </h1>
+
+<%= form_with url: "/teams/#{@team.id}/players", method: :post, data: {turbo: :false} do |form| %>
+  <p> Edit Team: </p>
+  <%= form.label :name, "Name:"%> 
+  <%= form.text_field :name%> </br>
+  <%= form.label :age, "Age:"%> 
+  <%= form.text_field :age%> </br>
+  Was this player born outside of the US?
+  <%= form.radio_button :international, "True"%>
+  <%= form.label :international_true, "True"%>
+  <%= form.radio_button :international, "False"%>
+  <%= form.label :international_false, "False"%></br>
+  <%= form.submit :submit%>
+<% end %>

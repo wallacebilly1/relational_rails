@@ -1,7 +1,10 @@
 <h1><%="#{@team.city}"" ""#{@team.name}"%> Players</h1>
 
+<h3> <%= link_to "Create Player", "/teams/#{@team.id}/players/new" %> </h3>
+
 <% @team.players.each do |player| %>
   <p>Name: <%= player.name %></p>
   <p>Age: <%= player.age %></p>
   <p>International Player: <%= player.international %></p>
 <% end %>
+
