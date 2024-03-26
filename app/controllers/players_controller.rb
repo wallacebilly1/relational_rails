@@ -9,12 +9,11 @@ class PlayersController < ApplicationController
   end
 
   def new
-    @players = Player.all
+
   end
 
   def create
-    player = Player.create!(player_params)
-    redirect_to "/players"
+
   end
 
   def edit

@@ -7,5 +7,6 @@
     <p>International Player: <%= player.international %></p>
     <p>Team: <%= player.team.name %></p>
     <%= button_to "Edit #{player.name}", "/players/#{player.id}/edit", method: :get %> 
+    <%= button_to "Delete #{player.name}", "/players/#{player.id}", method: :delete %> 
   </div>
 <% end %>
