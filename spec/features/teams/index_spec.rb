@@ -139,11 +139,6 @@ RSpec.describe "Teams Index Page", type: :feature do
   end
 
   describe "User Story 22" do
-    # As a visitor
-    # When I visit the parent index page
-    # Next to every parent, I see a link to delete that parent
-    # When I click the link
-    # I am returned to the Parent Index Page where I no longer see that parent
     describe "As a visitor" do
       describe "When I visit the Teams Index Page" do
         it "Next to every team, I see a link to delete that team" do

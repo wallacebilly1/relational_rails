@@ -111,4 +111,30 @@ RSpec.describe "Players Index Page", type: :feature do
       end
     end
   end
+
+  describe "User Story 23" do
+    describe "As a visitor" do
+      describe "When I visit the Players Index Page" do
+        it "Next to every player, I see a link to delete that player" do
+          #act
+          visit "/players"
+          #assert
+          expect(page).to have_button("Delete #{@jokic.name}")
+          expect(page).to have_button("Delete #{@murray.name}")
+          expect(page).to have_button("Delete #{@shai.name}")
+        end
+      end
+
+      describe "When I click the link to delete the player" do
+        it "I am returned to the Players Index Page and no longer see that player" do
+          #act
+          visit "/players"
+          click_on("Delete #{@shai.name}")
+          #assert
+          expect(page).to have_current_path("/players")
+          expect(page).to_not have_content("Shai Gilgeous-Alexander")
+        end
+      end
+    end
+  end
 end
