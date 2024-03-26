@@ -92,4 +92,35 @@ RSpec.describe "Teams Players Index Page", type: :feature do
       end
     end
   end
+
+  describe "User Story 16" do
+    # User Story 16, Sort Parent's Children in Alphabetical Order by name 
+
+    # As a visitor
+    # When I visit the Parent's children Index Page
+    # Then I see a link to sort children in alphabetical order
+    # When I click on the link
+    # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+    describe "As a visitor" do
+      describe "When I visit the Team's Players Index Page" do
+        it "Then I see a lnk to sort children in alphabetical order" do
+          #act
+          visit "/teams/#{@nuggets.id}/players"
+          #assert
+          expect(page).to have_link("Sort Alphabetically")
+        end
+      end
+      
+      describe "When I click on the link" do
+        it "I'm taken back to the Team's Players Index Page with the players in alpha order" do
+          #act
+          visit "/teams/#{@nuggets.id}/players"
+          click_on("Sort Alphabetically")
+          #assert
+          expect(page).to have_current_path("/teams/#{@nuggets.id}/players/")
+          expect(@jamal.name).to appear_before(@jokic.name)
+        end
+      end
+    end
+  end
 end
