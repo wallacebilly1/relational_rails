@@ -1,7 +1,6 @@
 class PlayersController < ApplicationController
   def index
-    # move .where to the model
-    @players = Player.all.where(international: true)
+    @players = Player.international_only
   end
 
   def show

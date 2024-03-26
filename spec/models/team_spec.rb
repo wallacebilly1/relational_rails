@@ -18,4 +18,13 @@ RSpec.describe Team, type: :model do
       expect(lakers.player_count).to eq 1
     end
   end
+
+  describe 'class methods' do
+    it '.order_by_created_at' do
+      nuggets = Team.create!(name: "Nuggets", city: "Denver", single_city: true, total_cap: 185751085)
+      lakers = Team.create!(name: "Lakers", city: "Los Angeles", single_city: false, total_cap: 182033999)
+
+      expect(Team.order_by_created_at).to eq [lakers, nuggets]
+    end
+  end
 end
