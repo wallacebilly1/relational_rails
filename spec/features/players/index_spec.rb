@@ -46,4 +46,24 @@ RSpec.describe "Players Index Page", type: :feature do
       end
     end
   end
+
+  describe "User Story 15" do
+    # User Story 15, Child Index only shows `true` Records 
+
+    # As a visitor
+    # When I visit the child index
+    # Then I only see records where the boolean column is `true`
+    describe "As a visitor" do
+      describe "When I visit the player index" do
+        it "Then I only see records of international players" do
+          #act
+          visit "/players"
+          #assert
+          expect(page).to have_content('Name: Nikola Jokic')
+          expect(page).to have_content('Name: Jamal Murray')
+          expect(page).to have_content('Name: Shai Gilgeous-Alexander')
+        end
+      end
+    end
+  end
 end
