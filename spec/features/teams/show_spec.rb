@@ -99,4 +99,37 @@ RSpec.describe "Teams Show Page", type: :feature do
       end
     end
   end
+
+  describe "User Story 19" do
+    describe "As a visitor" do
+      describe "When I visit a team show page" do
+        it "Then I see a link to delete the parent" do
+          #act
+          visit "/teams/#{@lakers.id}"
+          #assert
+          expect(page).to have_button('Delete')
+        end
+      end
+
+      describe "When I click the link 'Delete Team'" do
+        it "Then I am redirected to the teams index page where I no longer see this team" do
+          #act
+          visit "/teams/#{@lakers.id}"
+          click_button('Delete')
+          #assert
+          expect(page).to have_current_path("/teams")
+          expect(page).to_not have_content("Lakers")
+        end
+
+        it "And all players from that team are deleted" do
+          #act
+          visit "/teams/#{@lakers.id}"
+          click_button('Delete')
+          visit "/players"
+          #assert
+          expect(page).to_not have_content("Lebron James")
+        end
+      end
+    end
+  end
 end
