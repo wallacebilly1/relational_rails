@@ -137,4 +137,35 @@ RSpec.describe "Teams Index Page", type: :feature do
       end
     end
   end
+
+  describe "User Story 22" do
+    # As a visitor
+    # When I visit the parent index page
+    # Next to every parent, I see a link to delete that parent
+    # When I click the link
+    # I am returned to the Parent Index Page where I no longer see that parent
+    describe "As a visitor" do
+      describe "When I visit the Teams Index Page" do
+        it "Next to every team, I see a link to delete that team" do
+          #act
+          visit "/teams"
+          #assert
+          expect(page).to have_button("Delete #{@nuggets.name}")
+          expect(page).to have_button("Delete #{@lakers.name}")
+          expect(page).to have_button("Delete #{@thunder.name}")
+        end
+      end
+
+      describe "When I click the link to delete the team" do
+        it "I am returned to the Teams Index Page and no longer see that team" do
+          #act
+          visit "/teams"
+          click_on("Delete #{@lakers.name}")
+          #assert
+          expect(page).to have_current_path("/teams")
+          expect(page).to_not have_content("Lakers")
+        end
+      end
+    end
+  end
 end
