@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Teams Index Page", type: :feature do
-  before :all do
+  before :each do
     @nuggets = Team.create!(name: "Nuggets", city: "Denver", single_city: true, total_cap: 185751085)
     @lakers = Team.create!(name: "Lakers", city: "Los Angeles", single_city: false, total_cap: 182033999)
     @thunder = Team.create!(name: "Thunder", city: "Oklahoma City", single_city: true, total_cap: 160502705)
@@ -43,7 +43,8 @@ RSpec.describe "Teams Index Page", type: :feature do
           #act
           visit "/teams"
           #assert
-          expect(page).to have_content("Name: #{@nuggets.name}, Created At: #{@nuggets.created_at}")
+          expect(page).to have_content("Name: #{@nuggets.name}")
+          expect(page).to have_content("Created At: #{@nuggets.created_at}")
         end
       end
     end
@@ -108,6 +109,30 @@ RSpec.describe "Teams Index Page", type: :feature do
           expect(page).to have_content('City: Sacramento')
           expect(page).to have_content('This team has never moved: false')
           expect(page).to have_content('Total Salary Cap: 149993550')
+        end
+      end
+    end
+  end
+
+  describe "User Story 17" do
+    describe "As a visitor" do
+      describe "When I visit '/teams'" do
+        it "Next to every team, I see a link to edit that team" do
+          #act
+          visit "/teams"
+          #assert
+          expect(page).to have_button("Edit #{@nuggets.name}")
+          expect(page).to have_button("Edit #{@lakers.name}")
+          expect(page).to have_button("Edit #{@thunder.name}")
+        end
+      end
+      describe "When I click the 'edit' link" do
+        it "I am taken to that team's edit page where I can update the information" do 
+          #act
+          visit "/teams"
+          click_on("Edit #{@nuggets.name}")
+          #assert
+          expect(page).to have_current_path("/teams/#{@nuggets.id}/edit")
         end
       end
     end

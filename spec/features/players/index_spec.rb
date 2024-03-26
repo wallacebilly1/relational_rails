@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Players Index Page", type: :feature do
-  before :all do
+  before :each do
     @nuggets = Team.create!(name: "Nuggets", city: "Denver", single_city: true, total_cap: 185751085)
     @lakers = Team.create!(name: "Lakers", city: "Los Angeles", single_city: false, total_cap: 182033999)
     @thunder = Team.create!(name: "Thunder", city: "Oklahoma City", single_city: true, total_cap: 160502705)

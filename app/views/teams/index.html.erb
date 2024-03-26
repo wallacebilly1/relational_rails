@@ -1,7 +1,11 @@
 <h1>All Teams</h1>
 
-<h3> <%= link_to "Create Team", "/teams/new" %> </h3>
+<h2> <%= link_to "Create Team", "/teams/new" %> </h2>
 
 <% @teams.each do |team| %>
-  <p>Name: <%= team.name %>, Created At: <%= team.created_at%></p>
+  <div id="team_<%=team.id%>_info">
+    <h3>Name: <%= team.name %> </h3>
+    <p>Created At: <%= team.created_at%></p>
+    <%= button_to "Edit #{team.name}", "/teams/#{team.id}/edit", method: :get %> 
+  </div>
 <% end %>

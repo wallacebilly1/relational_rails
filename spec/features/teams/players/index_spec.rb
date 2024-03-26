@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Teams Players Index Page", type: :feature do
-  before :all do
+  before :each do
     @nuggets = Team.create!(name: "Nuggets", city: "Denver", single_city: true, total_cap: 185751085)
     @lakers = Team.create!(name: "Lakers", city: "Los Angeles", single_city: false, total_cap: 182033999)
     @thunder = Team.create!(name: "Thunder", city: "Oklahoma City", single_city: true, total_cap: 160502705)
@@ -94,13 +94,6 @@ RSpec.describe "Teams Players Index Page", type: :feature do
   end
 
   describe "User Story 16" do
-    # User Story 16, Sort Parent's Children in Alphabetical Order by name 
-
-    # As a visitor
-    # When I visit the Parent's children Index Page
-    # Then I see a link to sort children in alphabetical order
-    # When I click on the link
-    # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
     describe "As a visitor" do
       describe "When I visit the Team's Players Index Page" do
         it "Then I see a lnk to sort children in alphabetical order" do
