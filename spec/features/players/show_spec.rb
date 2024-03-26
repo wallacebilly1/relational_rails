@@ -76,4 +76,28 @@ RSpec.describe "Players Show Page", type: :feature do
       end
     end
   end
+
+  describe "User Story 20" do
+    describe "As a visitor" do
+      describe "When I visit a player show page" do
+        it "Then I see a link to delete the player" do
+          #act
+          visit "/players/#{@shai.id}"
+          #assert
+          expect(page).to have_button('Delete Player')
+        end
+      end
+
+      describe "When I click the link 'Delete Player'" do
+        it "Then I am redirected to the players index page where I no longer see this player" do
+          #act
+          visit "/players/#{@shai.id}"
+          click_button('Delete Player')
+          #assert
+          expect(page).to have_current_path("/players")
+          expect(page).to_not have_content("Shai Gilgeous-Alexander")
+        end
+      end
+    end
+  end
 end

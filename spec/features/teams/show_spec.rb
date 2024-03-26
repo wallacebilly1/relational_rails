@@ -103,7 +103,7 @@ RSpec.describe "Teams Show Page", type: :feature do
   describe "User Story 19" do
     describe "As a visitor" do
       describe "When I visit a team show page" do
-        it "Then I see a link to delete the parent" do
+        it "Then I see a link to delete the team" do
           #act
           visit "/teams/#{@lakers.id}"
           #assert

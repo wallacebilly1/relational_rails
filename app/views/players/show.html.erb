@@ -1,7 +1,8 @@
 <h1><%="#{@player.name}"%> Info</h1>
 
-<p>Name: <%=@player.name%></p>
+<h3>Name: <%=@player.name%></h3>
 <p>Age: <%=@player.age%></p>
 <p>International Player: <%=@player.international%></p>
 <p>Team: <%=@player.team.city%> <%=@player.team.name%></p>
 <p> <%= link_to "Update Player", "/players/#{@player.id}/edit" %> </p>
+<p> <%= button_to "Delete Player", "/players/#{@player.id}", method: :delete %> </p>

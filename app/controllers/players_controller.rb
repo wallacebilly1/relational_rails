@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   def index
+    # move .where to the model
     @players = Player.all.where(international: true)
   end
 
@@ -26,6 +27,13 @@ class PlayersController < ApplicationController
     player.update!(player_params)
 
     redirect_to "/players/#{player.id}"
+  end
+
+  def destroy
+    player = Player.find(params[:id])
+    player.destroy
+
+    redirect_to "/players"
   end
 
   private
