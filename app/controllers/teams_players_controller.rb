@@ -4,9 +4,9 @@ class TeamsPlayersController < ApplicationController
     @players = @team.players
     
     if params[:sort] == 'alphabetically'
-      @players = @team.players.order(:name)
+      @players = Player.sort_alpha
     elsif params[:players_older_than_age]
-      @players = @team.players.where("age > #{params[:players_older_than_age]}")
+      @players = Player.filter_older_than_age(params[:players_older_than_age])
     end
   end
 
