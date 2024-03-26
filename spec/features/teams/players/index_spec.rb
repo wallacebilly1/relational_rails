@@ -116,4 +116,31 @@ RSpec.describe "Teams Players Index Page", type: :feature do
       end
     end
   end
+
+  describe "User Story 21" do
+    describe "As a visitor" do
+      describe "When I visit the Team's Players Index Page" do
+        it "I see a form that allows me to input an age value" do
+          #act
+          visit "/teams/#{@nuggets.id}/players"
+          #assert
+          within "#filter_by_age" do
+            expect(page).to have_selector('form')
+          end
+        end
+      end
+
+      describe "When I input an age and click submit on the 'Filter by Age' button" do
+        it "I am brought back to the Team's Players Index Page with just the players that meet the age threshold displayed" do
+          #act
+          visit "/teams/#{@nuggets.id}/players"
+          fill_in(:players_older_than_age, with: '28')
+          click_button('Submit')
+          #assert
+          expect(page).to have_content("Nikola Jokic")
+          expect(page).to_not have_content("Jamal Murray")
+        end
+      end
+    end
+  end
 end

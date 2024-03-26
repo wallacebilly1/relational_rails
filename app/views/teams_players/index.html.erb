@@ -13,4 +13,10 @@
 <% end %>
 
 <h3> <%= link_to "Sort Alphabetically", "/teams/#{@team.id}/players?sort=alphabetically" %> </h3>
-
+<div id ="filter_by_age">
+<%= form_with url: "/teams/#{@team.id}/players", method: :get do |form| %>
+  <%= form.label :players_older_than_age, 'Show only players older than:' %><br/>
+  <%= form.number_field :players_older_than_age, value: '00' %>
+  <%= form.submit 'Submit' %>
+<% end %>
+</div>
